@@ -8,7 +8,7 @@ from .decorators import allowed_users, admin_only
 from django.utils.decorators import method_decorator
 from django.views.generic import DetailView
 
-
+@allowed_users(allowed_roles=['admin'])
 @login_required
 @admin_only
 def dashboard_view(request):

@@ -22,7 +22,7 @@ from django.views.static import serve
 from django.conf.urls import url
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('nubtk/cse/admin/', admin.site.urls),
     path('', include('frontpage.urls')),
     path('dashboard/', include('dashboard.urls')),
     url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
@@ -31,3 +31,6 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = 'blood.views.error_404_view'

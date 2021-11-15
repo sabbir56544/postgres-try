@@ -9,17 +9,19 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 
 def home_view(request): 
-    about = About.objects.all()
-    gallery = GalleryPhoto.objects.all()
-    d_process = DonationProcess.objects.all()
-    context = {
-        'abouts': about,
-        'gallery': gallery,
-        'process': d_process,
-        'form': 'form',
-    }
-    return render(request, 'index.html', context)
-
+    try:
+        about = About.objects.all()
+        gallery = GalleryPhoto.objects.all()
+        d_process = DonationProcess.objects.all()
+        context = {
+            'abouts': about,
+            'gallery': gallery,
+            'process': d_process,
+            'form': 'form',
+        }
+        return render(request, 'index.html', context)
+    except:
+        return redirect('home')
 
 def register_view(request):
     form = DonorRegistration()
